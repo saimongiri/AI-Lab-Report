@@ -1,8 +1,8 @@
 class waterjug:
     
     def __init__(self,xcapacity,ycapacity):
-        xcapacity=self.xcapacity
-        ycapacity=self.ycapacity
+        self.xcapacity=xcapacity
+        self.ycapacity=ycapacity
     
     def min(self,d,f):
         if d<f:
@@ -21,28 +21,28 @@ class waterjug:
                 x=self.xcapacity
                 step=step+1
                 print("Fill x")
-                display(x,y,step)
+                self.display(x,y,step)
             elif y == self.ycapacity :
                 y=0
                 step=step+1
                 print("Empty Y")
-                display(x,y,step)
+                self.display(x,y,step)
             else:
-                temp = min(self.ycapacity-y,x)
+                temp = self.min(self.ycapacity-y,x)
                 y=y+temp
                 x=x-temp
                 step=step+1
                 print("pour in X in Y")
-                display(x,y,step)
-            return step
+                self.display(x,y,step)
+        return step
         
-        def display(self,a,b,s):
-            print("\t"+a+"\t"+b+"\t"+step)
+    def display(self,a,b,step):
+            print("\t"+str(a)+"\t"+str(b)+"\t"+str(step))
             print()
 
 n = int(input("Enter the liters(GOAL) of water required to be filled in Vessel 1:"))
 xcap=int(input("Enter the capacity of the first vessel:"))
 ycap=int(input("Enter the capacity of the second vessel:"))
-agent = waterjug(xcap,ycap)
+agent = waterjug(xcapacity=xcap,ycapacity=ycap)
 steps = agent.successor(n)
-print("Steps required:"+steps)
+print("Steps required:",steps)
