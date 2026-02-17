@@ -1,3 +1,4 @@
 class npuzzle:
-    def __init__(self):
-        pass
+    def __init__(self,number):
+        self.number=number
+        self.grid = randint
